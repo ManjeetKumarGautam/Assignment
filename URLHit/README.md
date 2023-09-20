@@ -110,4 +110,4 @@ public class DataSource {
 
 
 ## Project Summary
-In the URL Hit Application, where you  
+In the URL Hit Application, where user can check many time URL hit by the users, how many visitors to visit the url and also check the visitor how many times hit the URL. 
