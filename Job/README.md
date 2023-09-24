@@ -192,3 +192,4 @@ spring.jpa.properties.hibernate.format_sql=true
 
 
 ## Project Summary
+Job API allows users to access and manage job information, including details about job titles, descriptions, locations, salaries, company information, and more. The API supports common operations such as retrieving a list of jobs, fetching specific job details by ID, creating new job listings, updating existing job information, and deleting jobs. 
