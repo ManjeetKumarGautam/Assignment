@@ -20,12 +20,6 @@ public class EventService {
         return "Added...";
     }
 
-//    @Transactional
-//    public String updateEventLocationById(Integer id, String location) {
-//        eventRepo.updateEventLocation(id,location);
-//        return "Updated...";
-//    }
-
     public String deleteEventById(Integer id) {
         eventRepo.deleteById(id);
         return "Deleted...";

@@ -22,8 +22,10 @@ public class Student {
     @NotNull
     private Long studentId;
 
-
+    @Pattern(regexp = "^[A-Z][a-z]*$")
     private String firstName;
+
+    @Pattern(regexp = "^[A-Z][a-z]*$")
     private String lastName;
 
     @Min(18)
