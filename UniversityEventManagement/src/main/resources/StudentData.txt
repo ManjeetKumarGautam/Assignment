@@ -1,0 +1,51 @@
+[
+  {
+    "studentId": 1,
+    "firstName": "Aryan",
+    "lastName": "Sharma",
+    "age": 20,
+    "department": "CS"
+  },
+  {
+    "studentId": 2,
+    "firstName": "Ananya",
+    "lastName": "Patel",
+    "age": 21,
+    "department": "EE"
+  },
+  {
+    "studentId": 3,
+    "firstName": "Rahul",
+    "lastName": "Gupta",
+    "age": 22,
+    "department": "ME"
+  },
+  {
+    "studentId": 4,
+    "firstName": "Sneha",
+    "lastName": "Kumar",
+    "age": 19,
+    "department": "CS"
+  },
+  {
+    "studentId": 5,
+    "firstName": "Priya",
+    "lastName": "Yadav",
+    "age": 20,
+    "department": "Civil"
+  },
+  {
+    "studentId": 6,
+    "firstName": "Aditi",
+    "lastName": "Mishra",
+    "age": 23,
+    "department": "CS"
+  },
+  {
+    "studentId": 7,
+    "firstName": "Ravi",
+    "lastName": "Verma",
+    "age": 22,
+    "department": "CS"
+  }
+]
