@@ -1,58 +1,58 @@
 [
   {
     "eventId": 1,
-    "eventName": "Birthday Party",
-    "eventLocation": "1234 Elm St, Springfield",
+    "eventName": "University Orientation",
+    "eventLocation": "Main Auditorium, University Campus",
     "date": "2023-10-05",
-    "startTime": "16:00",
-    "endTime": "20:00"
+    "startTime": "16:00:00",
+    "endTime": "20:00:00"
   },
   {
     "eventId": 2,
-    "eventName": "Conference",
-    "eventLocation": "Convention Center, Cityville",
+    "eventName": "Academic Symposium",
+    "eventLocation": "Lecture Halls, Academic Center",
     "date": "2023-11-12",
-    "startTime": "09:00",
-    "endTime": "17:00"
+    "startTime": "09:00:00",
+    "endTime": "17:00:00"
   },
   {
     "eventId": 3,
-    "eventName": "Wedding Reception",
-    "eventLocation": "The Manor, Oakwood",
+    "eventName": "Graduation Celebration",
+    "eventLocation": "University Grand Ballroom",
     "date": "2023-12-18",
-    "startTime": "18:30",
-    "endTime": "23:30"
+    "startTime": "18:30:00",
+    "endTime": "23:30:00"
   },
   {
     "eventId": 4,
-    "eventName": "Team Building Workshop",
-    "eventLocation": "Sunset Retreat, Mountainview",
+    "eventName": "Student Leadership Workshop",
+    "eventLocation": "Student Activity Center",
     "date": "2023-10-28",
-    "startTime": "10:00",
-    "endTime": "15:00"
+    "startTime": "10:00:00",
+    "endTime": "15:00:00"
   },
   {
     "eventId": 5,
-    "eventName": "Product Launch",
-    "eventLocation": "Tech Hub Auditorium, Silicon Valley",
+    "eventName": "Innovation Expo",
+    "eventLocation": "Innovation Hub, University Campus",
     "date": "2023-11-05",
-    "startTime": "14:00",
-    "endTime": "18:00"
+    "startTime": "14:00:00",
+    "endTime": "18:00:00"
   },
   {
     "eventId": 6,
-    "eventName": "Music Concert",
-    "eventLocation": "City Park Amphitheater, Riverdale",
+    "eventName": "Music and Arts Festival",
+    "eventLocation": "University Amphitheater",
     "date": "2023-11-20",
-    "startTime": "19:00",
-    "endTime": "22:30"
+    "startTime": "19:00:00",
+    "endTime": "22:30:00"
   },
   {
     "eventId": 7,
-    "eventName": "Charity Auction",
-    "eventLocation": "Community Center, Springville",
+    "eventName": "Scholarship Fundraising Gala",
+    "eventLocation": "University Ballroom",
     "date": "2023-12-05",
-    "startTime": "17:30",
-    "endTime": "21:00"
+    "startTime": "17:30:00",
+    "endTime": "21:00:00"
   }
 ]
