@@ -188,3 +188,4 @@
 * List
 
 ## Project Summary
+University Event Management involves the planning, organization, and execution of various events within a university setting. These events can encompass a wide range of activities, including academic conferences, seminars, workshops, cultural festivals, sports tournaments, and social gatherings.
