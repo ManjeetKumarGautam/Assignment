@@ -1,4 +1,4 @@
-# University Event Management
+# Ecommerce Api
 
 ## Framework and Language
 * ### Framework
@@ -9,162 +9,216 @@
 ## Data Flow
 ### 1. Controller
 
-* **Student Controller**
+
+* **User Controller**
 ```java
-    public class StudentController {
+   @RestController
+public class UserController {
 
-    @Autowired
-    StudentService studentService;
+  @Autowired
+  UserService userService;
 
-    @PostMapping("students")
-    public String addStudents(@RequestBody @Valid List<Student> stdList){
-        return studentService.addStudents(stdList);
-    }
+  @PostMapping("users")
+  public String addUser(@RequestBody List<User> userList){
+    return userService.addUsers(userList);
+  }
 
-    @PutMapping("student/id/{id}/department/{department}")
-    public String updateStudentDepartmentById(@PathVariable Long id, @PathVariable String department){
-        return  studentService.updateStudentDepartmentById(id,department);
-    }
+  @GetMapping("user/id/{id}")
+  public User getUserById(@PathVariable Integer id){
+    return userService.getUserById(id);
+  }
 
-    @DeleteMapping("student/id/{id}")
-    public String deleteStudentById(@PathVariable Long id){
-        return  studentService.deleteStudentById(id);
-    }
-
-    @GetMapping("students")
-    public List<Student> getStudents(){
-        return studentService.getStudents();
-    }
-
-    @GetMapping("student/id/{id}")
-    public Student getStudentById(@PathVariable Long id){
-        return studentService.getStudentById(id);
-    }
 }
 ```
-* **Event Controller**
+* **Product Controller**
 ```java
-    public class EventController {
+    @RestController
+public class ProductController {
 
-    @Autowired
-    EventService eventService;
+  @Autowired
+  ProductService productService;
 
-    @PostMapping("events")
-    public String  addEvents(@RequestBody @Valid List<Event> eventList){
-        return eventService.addEvents(eventList);
-    }
+  @PostMapping("products")
+  public String addProducts(@RequestBody List<Product> productList){
+    return productService.addProducts(productList);
+  }
 
-    @PutMapping("event/id/{id}/date/{date}")
-    public String updateEventDateById(@PathVariable Integer id,@PathVariable LocalDate date){
-        return eventService.updateEventDateById(id,date);
-    }
+  @GetMapping("products")
+  public List<Product> getProducts(){
+    return productService.getProducts();
+  }
 
-    @DeleteMapping("event/id/{id}")
-    public String deleteEventById(@PathVariable Integer id){
-        return eventService.deleteEventById(id);
-    }
+  @GetMapping("products/category/{category}")
+  public List<Product> getProductsByCategory(@PathVariable String category){
+    return productService.getProductsByCategory(category);
+  }
 
-    @GetMapping("event/date/{date}")
-    public  List<Event> getEventsByDate(@PathVariable LocalDate date){
-        return eventService.getEventsByDate(date);
-    }
+  @DeleteMapping("product/id/{id}")
+  public String deleteProductById(@PathVariable Integer id){
+    return productService.deleteProductById(id);
+  }
+}
+```
 
-    @PutMapping("event/id/{id}/eventName/{name}")
-    public String updateEventNameById(Integer id, String name) {
-        return eventService.updateEventNameById(id,name);
-    }
+* **Address Controller**
+```java
+
+@RestController
+public class AddressController {
+
+  @Autowired
+  AddressService addressService;
+
+  @PostMapping("addresses")
+  public String addAddress(@RequestBody List<Address> addressList){
+    return addressService.addAddresses(addressList);
+  }
+}
+```
+* **Order Controller**
+```java
+    @RestController
+public class OrderController {
+
+  @Autowired
+  OrderService orderService;
+
+  @PostMapping("orders")
+  public String addOrder(@RequestBody List<Order> orderList){
+    return orderService.addOrder(orderList);
+  }
+
+  @GetMapping("order/id/{id}")
+  public Order getOrderById(@PathVariable Integer id){
+    return orderService.getOrderById(id);
+  }
 }
 ```
 
 ### 2. Services
-* **Student Service**
+* **User Service**
 ```java
-    public class StudentService {
-    @Autowired
-    IStudentRepo studentRepo;
+@Service
+public class UserService {
 
-    public String addStudents(List<Student> stdList) {
-        studentRepo.saveAll(stdList);
-        return "Added...";
-    }
+  @Autowired
+  IUserRepo userRepo;
 
-    @Transactional
-    public String updateStudentDepartmentById(Long id, String department) {
-        studentRepo.updateStudentDepartment(id,department);
-        return "Updated...";
-    }
+  public String addUsers(List<User> userList) {
+    userRepo.saveAll(userList);
+    return "Added...";
+  }
 
-    public String deleteStudentById(Long id) {
-        studentRepo.deleteById(id);
-        return "Deleted...";
-    }
+  public User getUserById(Integer id){
+    return userRepo.findById(id).get();
+  }
+}
 
-    public List<Student> getStudents() {
-        return (List<Student>)studentRepo.findAll();
-    }
+```
+* **Product Service**
+```java
+@Service
+public class ProductService {
+  @Autowired
+  IProductRepo productRepo;
 
-    public Student getStudentById(Long id) {
-        Student student = studentRepo.findById(id).get();
-        return student;
-    }
+  @Transactional
+  public String addProducts(List<Product> productList) {
+    productRepo.saveAll(productList);
+    return "Added...";
+  }
+
+  public List<Product> getProducts() {
+    return (List<Product>)productRepo.findAll();
+  }
+
+  public List<Product> getProductsByCategory(String category) {
+    return productRepo.getProductsByCategory(category);
+  }
+
+  public String deleteProductById(Integer id) {
+    productRepo.deleteById(id);
+    return "Deleted...";
+  }
 }
 ```
-* **Event Service**
+
+* **Address Service**
 ```java
-    public class EventService {
-    @Autowired
-    IEventRepo eventRepo;
+    @Service
+public class AddressService {
 
-    public String addEvents(List<Event> eventList) {
-        eventRepo.saveAll(eventList);
-        return "Added...";
-    }
+  @Autowired
+  IAddressRepo addressRepo;
 
-    public String deleteEventById(Integer id) {
-        eventRepo.deleteById(id);
-        return "Deleted...";
-    }
+  public String addAddresses(List<Address> addressList){
+    addressRepo.saveAll(addressList);
+    return "Added...";
+  }
+}
+```
+* **Order Service**
+```java
+    @Service
+public class OrderService {
+  @Autowired
+  IOrderRepo orderRepo;
 
-    public List<Event> getEventsByDate(LocalDate date) {
-        return eventRepo.findByDate(date);
-    }
+  public String addOrder(List<Order> orderList) {
+    orderRepo.saveAll(orderList);
+    return "Added...";
+  }
 
-    @Transactional
-    public String updateEventDateById(Integer id, LocalDate date) {
-        eventRepo.updateEventDate(id,date);
-        return "Updated...";
-    }
-
-    @Transactional
-    public String updateEventNameById(Integer id, String name) {
-        eventRepo.updateEventName(id,name);
-        return "Updated...";
-    }
+  public Order getOrderById(Integer id) {
+    return orderRepo.findById(id).get();
+  }
 }
 ```
 
 ### 3. Repository
-* **Student Repo**
+* **User Repo**
 ```java
-   
+  public interface IUserRepo extends JpaRepository<User, Integer> {
+
+} 
 ```
-* **Event Repo**
+* **Product Repo**
 ```java
-    
+    public interface IProductRepo extends JpaRepository<Product,Integer> {
+
+  @Modifying
+  @Query(value = "Select * from product where category= :category", nativeQuery = true)
+  List<Product> getProductsByCategory(String category);
+}
 ```
 
-```
-* **Event Repo**
+* **Address Repo**
 ```java
-    
+    public interface IAddressRepo extends JpaRepository<Address, Integer> {
+
+}
 ```
+* **Order Repo**
+```java
+    public interface IOrderRepo extends JpaRepository<Order,Integer> {
+}
+```
+
 ### 4. Data Source
 ```java
+  spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
+  spring.datasource.username=root
+  spring.datasource.password=root
+  spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+  spring.jpa.hibernate.ddl-auto=update
 
+  spring.jpa.properties.hibernate.show_sql=true
+  spring.jpa.properties.hibernate.use_sql_comments=true
+  spring.jpa.properties.hibernate.format_sql=true
 ```
 
 ## Data Sturcture
-* Searching
 * List
 
 ## Project Summary
+an eCommerce API involves defining endpoints and functionalities that allow interaction with an eCommerce system, managing products, orders, users and address.
