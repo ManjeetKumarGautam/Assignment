@@ -1,6 +1,5 @@
 package com.manjeet.EmployeeAddress.service;
 
-import com.manjeet.EmployeeAddress.model.Address;
 import com.manjeet.EmployeeAddress.model.Employee;
 import com.manjeet.EmployeeAddress.repo.IEmployeeRepo;
 import jakarta.transaction.Transactional;
