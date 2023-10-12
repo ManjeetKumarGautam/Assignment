@@ -1,7 +1,6 @@
 package com.example.RestaurantManagementServiceAPI.service;
 
 import com.example.RestaurantManagementServiceAPI.model.AuthToken;
-import com.example.RestaurantManagementServiceAPI.model.FoodItem;
 import com.example.RestaurantManagementServiceAPI.model.User;
 import com.example.RestaurantManagementServiceAPI.model.dto.AuthInputDto;
 import com.example.RestaurantManagementServiceAPI.model.dto.SignInInputDto;
@@ -11,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.regex.*;
 
 @Service
-public class UserService {
+public class AdminService {
 
     @Autowired
     IUserRepo userRepo;
@@ -21,7 +21,9 @@ public class UserService {
     @Autowired
     TokenService tokenService;
 
-    public String userSignUp(User user) {
+
+
+    public String adminSignUp(User user) {
 
         String newEmail = user.getEmail();
 
@@ -53,9 +55,17 @@ public class UserService {
 
     }
 
-    public String userSignIn(SignInInputDto signInInput) {
+    public String adminSignIn(SignInInputDto signInInput) {
 
         String email = signInInput.getEmail();
+        String EMAIL_REGEX= "^[a-zA-Z0-9._%+-]+@admin\\.com$";
+
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+
+        if(!matcher.matches()){
+            return "Not a valid email, Please login with admin Id ...";
+        }
 
         User existingUser = userRepo.findFirstByEmail(email);
 
@@ -92,7 +102,7 @@ public class UserService {
 
     }
 
-    public String userSignOut(AuthInputDto authInfo) {
+    public String adminSignOut(AuthInputDto authInfo) {
 
         if(tokenService.authenticate(authInfo)) {
             String tokenValue = authInfo.getTokenValue();
@@ -105,8 +115,4 @@ public class UserService {
 
     }
 
-
-    public List<User> getAllUsers() {
-        return userRepo.findAll();
-    }
 }

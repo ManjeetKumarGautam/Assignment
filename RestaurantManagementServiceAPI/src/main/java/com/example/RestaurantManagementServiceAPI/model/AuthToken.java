@@ -1,35 +1,34 @@
 package com.example.RestaurantManagementServiceAPI.model;
 
+import java.util.UUID;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "orders")
-public class Order {
+public class AuthToken {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderId;
+    private Integer tokenId;
+    private String tokenValue;
+    private LocalDateTime tokenCreationTime;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_food_id")
-    FoodItem foodItem;
-
-    private int qty;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "fk_user_id")
     User user;
 
-    private LocalDateTime dateTime;
+    public AuthToken(User user) {
+        this.user = user;
+        this.tokenCreationTime = LocalDateTime.now();
+        this.tokenValue = UUID.randomUUID().toString();
+    }
 
-    private Status status;
 
 }
